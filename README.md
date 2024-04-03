@@ -1,16 +1,18 @@
 # Hubble
+
 ## eBPF powered Network Service and Security Observability for Kubernetes
 
-### Autorzy
+### Autorzy:
+
 - Jakub Cudak
 - Piotr Aksamit
 - Karol Jurzec
 - Paweł Zaręba
 
-### Rok grupa
-2024 5
+### Rok grupa: 2024, gr.5
 
 ## Spis treści
+
 1. [Wprowadzenie](#wprowadzenie)
 2. [Podstawy teoretyczne / Stos technologiczny](#podstawy-teoretyczne--stos-technologiczny)
 3. [Opis koncepcji Case Study](#opis-koncepcji-case-study)
@@ -29,6 +31,13 @@
 
 ## Wprowadzenie
 
+Hubble to zaawansowane narzędzie do obserwacji i nadzoru bezpieczeństwa w sieci. Jest zaprojektowane specjalnie dla
+środowiska Kubernetes i opiera swoje działanie na technologii eBPF (Extended Berkeley Packet Filter). To rozwiązanie
+umożliwia pełną widoczność i śledzenie ruchu sieciowego w czasie rzeczywistym, oferując niezbędne informacje do
+monitorowania wydajności, debugowania problemów oraz zapewniania bezpieczeństwa zwłaszcza w rozbudowanej sieci aplikacji
+mikroserwisowych. Celem tej pracy jest zapoznanie się z technologią Hubble oraz zaprezentowanie jej możliwości na
+przykładzie konkretnego zbioru serwisów działających w środowisku Kubernetes.
+
 ## Podstawy teoretyczne / Stos technologiczny
 
 ## Opis koncepcji Case Study
@@ -40,12 +49,17 @@
 ## Metody instalacji
 
 ## Jak odtworzyć? - krok po kroku
+
 ### Podejście infrastruktury jako kod
 
 ## Kroki wdrożenia demo
+
 ### Konfiguracja ustawień
+
 ### Przygotowanie danych
+
 ### Procedura wykonania
+
 ### Prezentacja wyników
 
 ## Podsumowanie - wnioski
