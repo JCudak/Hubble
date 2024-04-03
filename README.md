@@ -27,27 +27,27 @@
 9. [Podsumowanie - wnioski](#podsumowanie---wnioski)
 10. [Źródła](#źródła)
 
-## 1. Wprowadzenie
+## Wprowadzenie
 
-## 2. Podstawy teoretyczne / Stos technologiczny
+## Podstawy teoretyczne / Stos technologiczny
 
-## 3. Opis koncepcji Case Study
+## Opis koncepcji Case Study
 
-## 4. Architektura rozwiązania
+## Architektura rozwiązania
 
-## 5. Opis konfiguracji środowiska
+## Opis konfiguracji środowiska
 
-## 6. Metody instalacji
+## Metody instalacji
 
-## 7. Jak odtworzyć? - krok po kroku
-### 7.1. Podejście infrastruktury jako kod
+## Jak odtworzyć? - krok po kroku
+### Podejście infrastruktury jako kod
 
-## 8. Kroki wdrożenia demo
-### 8.1 Konfiguracja ustawień
-### 8.2 Przygotowanie danych
-### 8.3 Procedura wykonania
-### 8.4 Prezentacja wyników
+## Kroki wdrożenia demo
+### Konfiguracja ustawień
+### Przygotowanie danych
+### Procedura wykonania
+### Prezentacja wyników
 
-## 9. Podsumowanie - wnioski
+## Podsumowanie - wnioski
 
-## 10. Źródła
+## Źródła
