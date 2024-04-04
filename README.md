@@ -1,4 +1,15 @@
-# Hubble
+Usługi:
+- 2 sewery mongo db
+- 3 serwery w pythonie 
+- Hubble 
+
+Koncept:
+Monitorowanie, obciążenie procesora, ramu poprzez ciąg odpytywanie bazy danych i innych serwerów. 
+
+Serwery:
+- serwer 1 wykonuje requesty za 10 miliekund na bazę A i bazę B 
+- serwer 2 wykonuje requesty za 50 miliekund na bazę A i bazę B 
+- serwer 3 wykonuje requesty za 100 miliekund na bazę A i bazę B Hubble
 
 ## eBPF powered Network Service and Security Observability for Kubernetes
 
@@ -17,6 +28,10 @@
 1. [Wprowadzenie](#wprowadzenie)
 2. [Podstawy teoretyczne / Stos technologiczny](#podstawy-teoretyczne--stos-technologiczny)
 3. [Opis koncepcji Case Study](#opis-koncepcji-case-study)
+
+
+
+
 4. [Architektura rozwiązania](#architektura-rozwiązania)
 5. [Opis konfiguracji środowiska](#opis-konfiguracji-środowiska)
 6. [Metody instalacji](#metody-instalacji)
