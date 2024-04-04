@@ -44,6 +44,12 @@ mikroserwisowych. Celem tej pracy jest zapoznanie się z technologią Hubble ora
 przykładzie konkretnego zbioru serwisów działających w środowisku Kubernetes.
 
 ## Podstawy teoretyczne / Stos technologiczny
+Zdecydowaliśmy się na uzycie następującego stosu technologicznego:
+- Minikube
+- MongoDB
+- Python + FastAPI
+- NodeJS
+- Hubble
 
 ## Opis koncepcji Case Study
 
