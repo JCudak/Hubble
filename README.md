@@ -9,7 +9,8 @@
 - Karol Jurzec
 - Paweł Zaręba
 
-### Rok grupa: 2024, gr.5
+### Rok: 2024
+### Grupa: gr.5
 
 ## Spis treści
 
@@ -43,6 +44,18 @@ przykładzie konkretnego zbioru serwisów działających w środowisku Kubernete
 ## Opis koncepcji Case Study
 
 ## Architektura rozwiązania
+
+Zdecydowaliśmy się na analizę ruchu sieciowego w środowisku symulującym mikroserwisową aplikację uzywającą bazy danych MongoDB.
+Architektura będzie wyglądała następująco:
+![architecture](img/arch_overview.png)
+
+Zrealizujemy 3 serwisy symulujące środowisko produkcyjne, które będą porozumiewać się ze sobą za pomocą protokołu http.
+Serwisy zostaną zrealizowane w technologiach Python i/lub JavaScript.
+Będą one generowały obciąenie rzędu kilku-kilkunastu zapytań na sekundę,
+co pozwoli na satysfakcjonujące wyniki obserwacji.
+
+W późniejszym stadium pracy mozemy wykonać migrację na klastrowy deployment mongodb (prawdopodobnie PSA),
+w celu obserwacji komunikacji pomiędzy węzłami klastra bazodanowego.
 
 ## Opis konfiguracji środowiska
 
