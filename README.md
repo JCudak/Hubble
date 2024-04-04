@@ -44,6 +44,16 @@ mikroserwisowych. Celem tej pracy jest zapoznanie się z technologią Hubble ora
 przykładzie konkretnego zbioru serwisów działających w środowisku Kubernetes.
 
 ## Podstawy teoretyczne / Stos technologiczny
+
+Hubbel zbudowany jest na bazie technologi Cilium i eBPF, które umożliwiają głęboki wgląd w komunikację i zachowanie usług, a także infrastrukturę sieciową w całkowicie przejrzysty sposób.
+
+Cilium jest oprogramowaniem open source służącym do zabezpieczania łączności sieciowej pomiędzy usługami aplikacji wdrożonymi przy użyciu platform zarządzania konteneramit takimi jak Docker i Kubernetes. Jego podstawą jest technologia jądra Linuksa zwana eBPF, która umożliwia dynamiczne wprowadzanie logiki kontroli bezpieczeństwa i kontroli w samym Linuksie. 
+
+Głównym celem eBPF jset bezpieczne i wydajne rozszerzenie możliwości jądra w czasie wykonywania, bez konieczności wprowadzania zmian w kodzie źródłowym jądra lub ładowania jego modułów. Bezpieczeństwo zapewnia wbudowany w jądro weryfikator, który przeprowadza statyczną analizę kodu i odrzuca programy, które ulegają awarii, zawieszają się lub w inny sposób negatywnie wpływają na jądro.
+
+Hubbel ponadto posiada swój graficzny interfejs instalowany jako część głównego serwisu. Pozwala on na automatyczne wykrywanie wykresu zależności usług dla klastrów Kubernetes, umożliwiając przyjazną dla użytkownika wizualizację i filtrowanie przepływów danych jako mapy usług.
+
+
 Zdecydowaliśmy się na uzycie następującego stosu technologicznego:
 - Minikube
 - MongoDB
