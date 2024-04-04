@@ -1,15 +1,4 @@
-Usługi:
-- 2 sewery mongo db
-- 3 serwery w pythonie 
-- Hubble 
 
-Koncept:
-Monitorowanie, obciążenie procesora, ramu poprzez ciąg odpytywanie bazy danych i innych serwerów. 
-
-Serwery:
-- serwer 1 wykonuje requesty za 10 miliekund na bazę A i bazę B 
-- serwer 2 wykonuje requesty za 50 miliekund na bazę A i bazę B 
-- serwer 3 wykonuje requesty za 100 miliekund na bazę A i bazę B Hubble
 
 ## eBPF powered Network Service and Security Observability for Kubernetes
 
@@ -57,6 +46,19 @@ przykładzie konkretnego zbioru serwisów działających w środowisku Kubernete
 ## Podstawy teoretyczne / Stos technologiczny
 
 ## Opis koncepcji Case Study
+
+Usługi:
+- 2 sewery mongo db
+- 3 serwery w pythonie 
+- Hubble 
+
+Koncept:
+Monitorowanie, obciążenie procesora, ramu poprzez ciąg odpytywanie bazy danych i innych serwerów. 
+
+Serwery:
+- serwer 1 wykonuje requesty za 10 miliekund na bazę A i bazę B 
+- serwer 2 wykonuje requesty za 50 miliekund na bazę A i bazę B 
+- serwer 3 wykonuje requesty za 100 miliekund na bazę A i bazę B Hubble
 
 ## Architektura rozwiązania
 
