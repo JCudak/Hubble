@@ -44,7 +44,22 @@ mikroserwisowych. Celem tej pracy jest zapoznanie się z technologią Hubble ora
 przykładzie konkretnego zbioru serwisów działających w środowisku Kubernetes.
 
 ## Podstawy teoretyczne / Stos technologiczny
+Projekt Hubble zapewnia zaawansowaną obserwowalność sieci oraz bezpieczeństwo w środowiskach Kubernetes, opierając się na technologii eBPF (Extended Berkeley Packet Filter). eBPF umożliwia wykonywanie programów w przestrzeni jądra Linuxa w sposób bezpieczny, co otwiera szerokie możliwości monitorowania i manipulowania ruchem sieciowym bez konieczności zmiany jądra systemu operacyjnego lub instalowania dodatkowych sterowników.
+Podstawy teoretyczne działania Hubble:
 
+- eBPF (Extended Berkeley Packet Filter):
+        Bezpieczeństwo i Wydajność: eBPF jest nowoczesną technologią jądra Linuxa, która umożliwia uruchamianie skompilowanych programów w przestrzeni jądra, zapewniając wysoki poziom bezpieczeństwa i wydajności. Programy eBPF są wstępnie weryfikowane, aby zapobiec niepożądanym działaniom, takim jak zapętlenia nieskończone czy dostęp do nieprawidłowych obszarów pamięci.
+        Obserwowalność i Śledzenie: Dzięki eBPF możliwe jest uzyskanie głębokiej wizualizacji zachowania systemu i aplikacji poprzez śledzenie wywołań systemowych, operacji na plikach, zdarzeń sieciowych i innych, bez negatywnego wpływu na wydajność systemu.
+- Kubernetes Networking:
+        Izolacja i Komunikacja: W środowiskach Kubernetes, Hubble wykorzystuje eBPF do monitorowania i analizy ruchu sieciowego między kontenerami, usługami i węzłami. Pozwala to na detekcję nieautoryzowanego ruchu, analizę wzorców ruchu i identyfikację potencjalnych zagrożeń.
+        Polityki Sieciowe: Hubble może obserwować, jak ruch sieciowy odpowiada zdefiniowanym politykom sieciowym w Kubernetes, umożliwiając automatyczne egzekwowanie zasad bezpieczeństwa i izolacji między aplikacjami.
+
+- Integracja z Cilium:
+        Zarządzanie Siecią na Poziomie Aplikacji: Hubble jest często używany razem z Cilium, rozwiązaniem CNI (Container Network Interface) opartym na eBPF. Cilium zapewnia zarządzanie siecią na poziomie aplikacji, umożliwiając definiowanie polityk sieciowych, które są świadome kontekstu aplikacji.
+        Rozszerzona Obserwowalność: Integracja z Cilium umożliwia Hubble monitorowanie ruchu na poziomie L7 (np. HTTP, gRPC), co jest kluczowe dla zrozumienia zachowania aplikacji i zapewnienia bezpieczeństwa na poziomie aplikacji.
+
+- Wizualizacja i Analiza Danych:
+        Graficzne Interfejsy Użytkownika i CLI: Hubble oferuje zarówno graficzne interfejsy użytkownika, jak i narzędzia CLI do wizualizacji i analizy danych sieciowych, umożliwiając szybkie identyfikowanie problemów i zagrożeń.
 ## Opis koncepcji Case Study
 
 Usługi:
