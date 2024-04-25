@@ -91,6 +91,7 @@ W późniejszym stadium pracy mozemy wykonać migrację na klastrowy deployment 
 w celu obserwacji komunikacji pomiędzy węzłami klastra bazodanowego.
 
 ## Opis konfiguracji środowiska
+1 dockerfile, wszystkie usługi uruchomiane w jednym kontenerze. Takie podejście powoduje prostą konfiguracje i zarządzanie
 
 ## Metody instalacji
 
