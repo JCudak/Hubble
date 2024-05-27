@@ -52,6 +52,7 @@ helm install mongo bitnami/mongodb -f mongo_values.yaml
 ```
 
 After that, You can check if the k8s pods were succesfully created with `kubectl get pods -w` (`-w` stands for watch).
+Keep in mind, that this installation will create a 8GB PVC (persistent volume claim) on Your local file-system.
 
 To actually interact with our installation, we'll make use of Mongo Express. Install it with:
 ```bash
