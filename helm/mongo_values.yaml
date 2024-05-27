@@ -1,4 +1,5 @@
 architecture: "replicaset"
+replicaSet:
   name: rs0
   replicas:
     secondary: 1
