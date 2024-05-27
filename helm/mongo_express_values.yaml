@@ -1,0 +1,14 @@
+mongodbAuthUsername: "suu"
+mongodbAuthPassword: "suu"
+mongodbAuthDatabase: "suu_db"
+mongodbServer: "mongo-mongodb-headless"
+service:
+  type: LoadBalancer
+  port: 8081
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

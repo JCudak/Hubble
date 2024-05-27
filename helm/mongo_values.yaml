@@ -1,0 +1,67 @@
+architecture: "replicaset"
+  name: rs0
+  replicas:
+    secondary: 1
+    arbiter: 1
+
+auth:
+  enabled: true
+  rootPassword: root
+  username: suu
+  password: suu
+  database: suu_db
+
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: "standard"
+
+service:
+  type: ClusterIP
+  port: 27017
+
+resources:
+  primary:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  secondary:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  arbiter:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+livenessProbe:
+  initialDelaySeconds: 90
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+readinessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+metrics:
+  enabled: true
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9216"
+
+rbac:
+  create: true
+  pspEnabled: true
