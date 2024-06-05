@@ -161,6 +161,146 @@ kubectl port-forward <the name of the mongo-express pod> 8081:8081
 ```
 Teraz możesz uzyskać dostęp do GUI, odwiedzając `localhost:8081` w swojej przeglądarce.
 
+## Cilium/Hubbel
+
+This guide will walk you through the quick default installation. It will automatically detect and use the best configuration possible for the Kubernetes distribution you are using.
+
+### Install the Cilium CLI
+
+Install the latest version of the Cilium CLI. The Cilium CLI can be used to install Cilium, inspect the state of a Cilium installation, and enable/disable various features (e.g. clustermesh, Hubble).
+
+Linux:
+
+```
+CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+CLI_ARCH=amd64
+if [ "$(uname -m)" = "aarch64" ]; then CLI_ARCH=arm64; fi
+curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
+rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+```
+
+MacOs:
+
+```
+CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+CLI_ARCH=amd64
+if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
+curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-darwin-${CLI_ARCH}.tar.gz{,.sha256sum}
+shasum -a 256 -c cilium-darwin-${CLI_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC cilium-darwin-${CLI_ARCH}.tar.gz /usr/local/bin
+rm cilium-darwin-${CLI_ARCH}.tar.gz{,.sha256sum}
+```
+
+Other: <https://github.com/cilium/cilium-cli/releases/tag/v0.16.9>
+
+### Install the Cilium
+
+Install Cilium on kubernetes Cluster:
+
+```
+cilium install --version 1.15.5
+```
+
+To valideate if the Cilium was correclty installed we can run `cilium status --wait`:
+```
+$ cilium status --wait
+   /¯¯\
+/¯¯\__/¯¯\    Cilium:         OK
+\__/¯¯\__/    Operator:       OK
+/¯¯\__/¯¯\    Hubble:         disabled
+\__/¯¯\__/    ClusterMesh:    disabled
+   \__/
+
+DaemonSet         cilium             Desired: 2, Ready: 2/2, Available: 2/2
+Deployment        cilium-operator    Desired: 2, Ready: 2/2, Available: 2/2
+Containers:       cilium-operator    Running: 2
+                  cilium             Running: 2
+Image versions    cilium             quay.io/cilium/cilium:v1.9.5: 2
+                  cilium-operator    quay.io/cilium/operator-generic:v1.9.5: 2
+```
+
+### Enable Hubbel / Grafana & Prometheus
+
+Hubble is the observability layer of Cilium and can be used to obtain cluster-wide visibility into the network and security layer of your Kubernetes cluster. In order to enable Hubble, run the command `cilium hubble enable`. Alternatively if you want to also add for observability Grafana and Prometheus instead of `cilium hubble enable` run:
+
+```
+helm upgrade cilium cilium/cilium --version 1.15.5 \
+   --namespace kube-system \
+   --reuse-values \
+   --set hubble.relay.enabled=true \
+   --set hubble.ui.enabled=true \
+   --set prometheus.enabled=true \
+   --set operator.prometheus.enabled=true \
+   --set hubble.enabled=true \
+   --set hubble.metrics.enableOpenMetrics=true \
+   --set hubble.metrics.enabled="{dns,drop,tcp,flow,port-distribution,icmp,httpV2:exemplars=true;labelsContext=source_ip\,source_namespace\,source_workload\,destination_ip\,destination_namespace\,destination_workload\,traffic_direction}"
+```
+
+Run `cilium status` to validate tha Hubbel is enabled and running:
+
+```
+$ cilium status
+    /¯¯\
+ /¯¯\__/¯¯\    Cilium:         OK
+ \__/¯¯\__/    Operator:       OK
+ /¯¯\__/¯¯\    Hubble:         OK
+ \__/¯¯\__/    ClusterMesh:    disabled
+    \__/
+
+DaemonSet         cilium                   Desired: 3, Ready: 3/3, Available: 3/3
+Deployment        cilium-operator          Desired: 1, Ready: 1/1, Available: 1/1
+Deployment        hubble-relay             Desired: 1, Ready: 1/1, Available: 1/1
+Containers:       cilium                   Running: 3
+                  cilium-operator          Running: 1
+                  hubble-relay             Running: 1
+Image versions    cilium-operator          quay.io/cilium/operator-generic:v1.9.5: 1
+                  hubble-relay             quay.io/cilium/hubble-relay:v1.9.5: 1
+                  cilium                   quay.io/cilium/cilium:v1.9.5: 3
+```
+
+### Install Hubbel client:
+
+To install Hubbel client run:
+
+Linux:
+```
+HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
+HUBBLE_ARCH=amd64
+if [ "$(uname -m)" = "aarch64" ]; then HUBBLE_ARCH=arm64; fi
+curl -L --fail --remote-name-all https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-${HUBBLE_ARCH}.tar.gz{,.sha256sum}
+sha256sum --check hubble-linux-${HUBBLE_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC hubble-linux-${HUBBLE_ARCH}.tar.gz /usr/local/bin
+rm hubble-linux-${HUBBLE_ARCH}.tar.gz{,.sha256sum}
+```
+
+MacOs:
+```
+HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
+HUBBLE_ARCH=amd64
+if [ "$(uname -m)" = "arm64" ]; then HUBBLE_ARCH=arm64; fi
+curl -L --fail --remote-name-all https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-darwin-${HUBBLE_ARCH}.tar.gz{,.sha256sum}
+shasum -a 256 -c hubble-darwin-${HUBBLE_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC hubble-darwin-${HUBBLE_ARCH}.tar.gz /usr/local/bin
+rm hubble-darwin-${HUBBLE_ARCH}.tar.gz{,.sha256sum}
+```
+
+Windows:
+```
+curl -LO "https://raw.githubusercontent.com/cilium/hubble/master/stable.txt"
+set /p HUBBLE_VERSION=<stable.txt
+curl -L --fail -O "https://github.com/cilium/hubble/releases/download/%HUBBLE_VERSION%/hubble-windows-amd64.tar.gz"
+curl -L --fail -O "https://github.com/cilium/hubble/releases/download/%HUBBLE_VERSION%/hubble-windows-amd64.tar.gz.sha256sum"
+certutil -hashfile hubble-windows-amd64.tar.gz SHA256
+type hubble-windows-amd64.tar.gz.sha256sum
+:: verify that the checksum from the two commands above match
+tar zxf hubble-windows-amd64.tar.gz
+```
+To enable the Hubbel UI run the command `cilium hubble enable --ui` and to open it  `cilium hubble ui` or `kubectl port-forward -n kube-system svc/hubble-ui <port number>:80 &`;
+If your browser has not automatically opened the UI, open the page http://localhost:12000 in your browser. You should see a screen with an invitation to select a namespace, use the namespace selector dropdown on the left top corner to select a namespace and pick `default`;
+
+
 ## Podsumowanie - wnioski
 
 ## Źródła
