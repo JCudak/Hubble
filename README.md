@@ -192,6 +192,9 @@ shasum -a 256 -c cilium-darwin-${CLI_ARCH}.tar.gz.sha256sum
 sudo tar xzvfC cilium-darwin-${CLI_ARCH}.tar.gz /usr/local/bin
 rm cilium-darwin-${CLI_ARCH}.tar.gz{,.sha256sum}
 ```
+
+Other: [a link](https://github.com/cilium/cilium-cli/releases/tag/v0.16.9)
+
 ### Install the Cilium
 
 Install Cilium on kubernetes Cluster:
@@ -220,19 +223,19 @@ Image versions    cilium             quay.io/cilium/cilium:v1.9.5: 2
 
 ### Enable Hubbel / Grafana & Prometheus
 
-Hubble is the observability layer of Cilium and can be used to obtain cluster-wide visibility into the network and security layer of your Kubernetes cluster. order to enable Hubble, run the command `cilium hubble enable` or alternatively if you want to also add for observability Grafana and Prometheus run:
+Hubble is the observability layer of Cilium and can be used to obtain cluster-wide visibility into the network and security layer of your Kubernetes cluster. In order to enable Hubble, run the command `cilium hubble enable`. Alternatively if you want to also add for observability Grafana and Prometheus instead of `cilium hubble enable` run:
 
 ```
 helm upgrade cilium cilium/cilium --version 1.15.5 \
    --namespace kube-system \
    --reuse-values \
    --set hubble.relay.enabled=true \
-   --set hubble.ui.enabled=true \ 
+   --set hubble.ui.enabled=true \
    --set prometheus.enabled=true \
    --set operator.prometheus.enabled=true \
    --set hubble.enabled=true \
    --set hubble.metrics.enableOpenMetrics=true \
-   --set hubble.metrics.enabled="{dns,drop,tcp,flow,port-distribution,icmp,httpV2:exemplars=true;labelsContext=source_ip\,source_namespace\,source_workload\,destination_ip\,destination_namespace\,destination_workload\,traffic_direction}"   
+   --set hubble.metrics.enabled="{dns,drop,tcp,flow,port-distribution,icmp,httpV2:exemplars=true;labelsContext=source_ip\,source_namespace\,source_workload\,destination_ip\,destination_namespace\,destination_workload\,traffic_direction}"
 ```
 
 Run `cilium status` to validate tha Hubbel is enabled and running:
