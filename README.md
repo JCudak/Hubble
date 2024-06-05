@@ -193,7 +193,7 @@ sudo tar xzvfC cilium-darwin-${CLI_ARCH}.tar.gz /usr/local/bin
 rm cilium-darwin-${CLI_ARCH}.tar.gz{,.sha256sum}
 ```
 
-Other: [a link](https://github.com/cilium/cilium-cli/releases/tag/v0.16.9)
+Other: <https://github.com/cilium/cilium-cli/releases/tag/v0.16.9>
 
 ### Install the Cilium
 
