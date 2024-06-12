@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: service1
-        image: jcudak/service1:latest
+        image: zpaks/service1:latest
         ports:
         - containerPort: 5001
         env:

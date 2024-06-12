@@ -21,14 +21,14 @@ helm install mongo-express cowboysysop/mongo-express -f helm/mongo_express_value
 
 # Build and push Docker images
 # cd ../services/service1
-# docker build -t jcudak/service1:latest .
-# docker push jcudak/service1:latest
+# docker build -t zpaks/service1:latest .
+# docker push zpaks/service1:latest
 # cd ../service2
-# docker build -t jcudak/service2:latest .
-# docker push jcudak/service2:latest
+# docker build -t zpaks/service2:latest .
+# docker push zpaks/service2:latest
 # cd ../service3
-# docker build -t jcudak/service3:latest .
-# docker push jcudak/service3:latest
+# docker build -t zpaks/service3:latest .
+# docker push zpaks/service3:latest
 
 cd helm
 

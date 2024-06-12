@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: service2
-        image: jcudak/service2:latest
+        image: zpaks/service2:latest
         ports:
         - containerPort: 5002
 ---
