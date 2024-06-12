@@ -380,6 +380,8 @@ wybierz default.
 
 ## Kroki wdrożenia demo
 
+Serwis 1 na starcie insertuje dane do bazy, tak żeby w kolekcji 'myCollection' było 1000 rekordów
+
 ## Podsumowanie - wnioski
 
 ## Źródła
