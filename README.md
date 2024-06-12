@@ -221,7 +221,7 @@ Image versions    cilium             quay.io/cilium/cilium:v1.9.5: 2
                   cilium-operator    quay.io/cilium/operator-generic:v1.9.5: 2
 ```
 
-### Enable Hubbel / Grafana & Prometheus
+### Enable Hubble / Grafana & Prometheus
 
 Hubble is the observability layer of Cilium and can be used to obtain cluster-wide visibility into the network and security layer of your Kubernetes cluster. In order to enable Hubble, run the command `cilium hubble enable`. Alternatively if you want to also add for observability Grafana and Prometheus instead of `cilium hubble enable` run:
 
@@ -260,9 +260,9 @@ Image versions    cilium-operator          quay.io/cilium/operator-generic:v1.9.
                   cilium                   quay.io/cilium/cilium:v1.9.5: 3
 ```
 
-### Install Hubbel client:
+### Install Hubble client:
 
-To install Hubbel client run:
+To install Hubble client run:
 
 Linux:
 ```
