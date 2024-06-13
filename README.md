@@ -20,14 +20,10 @@
 5. [Opis konfiguracji środowiska](#opis-konfiguracji-środowiska)
 6. [Metody instalacji](#metody-instalacji)
 7. [Jak odtworzyć? - krok po kroku](#jak-odtworzyć---krok-po-kroku)
-    - 7.1. Podejście infrastruktury jako kod
 8. [Kroki wdrożenia demo](#kroki-wdrożenia-demo)
-    - 8.1. Konfiguracja ustawień
-    - 8.2. Przygotowanie danych
-    - 8.3. Procedura wykonania
-    - 8.4. Prezentacja wyników
-9. [Podsumowanie - wnioski](#podsumowanie---wnioski)
-10. [Źródła](#źródła)
+9. [Prezentacja wyników](#prezentacja-wyników)
+10. [Podsumowanie - wnioski](#podsumowanie---wnioski)
+11. [Źródła](#źródła)
 
 ## Wprowadzenie
 
@@ -380,7 +376,25 @@ wybierz default.
 
 ## Kroki wdrożenia demo
 
-Serwis 1 na starcie insertuje dane do bazy, tak żeby w kolekcji 'myCollection' było 1000 rekordów
+Aby wdrożyć demo, najpierw przygotowano środowisko poprzez instalację Grafany i Hubble'a. Instalacja Grafany obejmowała pobranie oprogramowania, konfigurację połączeń do źródeł danych oraz stworzenie dashboardów wizualizujących dane. Równocześnie zainstalowano Hubble'a, skonfigurowano połączenia do monitorowanych zasobów i dodano reguły monitorowania. Następnie skonfigurowano źródła danych zarówno dla Grafany, jak i Hubble'a, a także stworzono dashboardy w Grafanie, które prezentują dane w czytelny sposób. W końcowej fazie integracji, Hubble został połączony z Grafaną, co umożliwiło przesyłanie i wyświetlanie danych monitorowania na dashboardach Grafany. Wszystkie te kroki zapewniły pełne wdrożenie systemu monitorowania.
+
+## Prezentacja wyników 
+
+![architecture](img/grafana.jpeg)
+
+Na powyższym zdjęciu widzimy przykładowy dashboard w Grafanie zawierający panele wizualizacyjne, które prezentują dane monitorowania. Panele mogą obejmować: wykresy liniowe pokazujące zmiany w czasie, tabele z danymi liczbowymi lub wskaźniki procentowe. Dashboard jest skonfigurowany tak, aby prezentować dane w czytelny sposób, ułatwiając analizę i identyfikację potencjalnych problemów.
+
+![architecture](img/hubble_graph.jpeg)
+
+Zdjęcie przedstawia graf zależności między serwisami generowane przez Hubble na podstawie ruchu sieciowego. UI pokazuje ponadto analize ruchu sieciowego w różnych segmentach sieci. Hubble dostarcza szczegółowych informacji na temat stanu sieci, co pozwala na szybką identyfikację problemów i podjęcie odpowiednich działań oraz ułatwia analize zależności między serwisami. 
+
+Wyniki prezentowane w Grafanie i Hubble pozwalają na kompleksowe monitorowanie środowiska. Kluczowe korzyści to:
+
+- szybka identyfikacja problemów dzięki czytelnym wizualizacjom.
+- możliwość śledzenia trendów i zmian w czasie.
+- proaktywne podejście do zarządzania infrastrukturą dzięki alertom i raportom.
+
+Dzięki integracji Grafany i Hubble, uzyskujemy pełny obraz stanu naszego środowiska, co umożliwia lepsze zarządzanie i optymalizację zasobów.
 
 ## Podsumowanie - wnioski
 
