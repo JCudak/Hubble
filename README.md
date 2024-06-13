@@ -384,4 +384,20 @@ Serwis 1 na starcie insertuje dane do bazy, tak żeby w kolekcji 'myCollection' 
 
 ## Podsumowanie - wnioski
 
+Eksperyment pozwolił nam zweryfikować zalety rozwiązania, jakim jest komponent Hubble oraz docenić prostotę jego zaufania.
+Jako jego największą zaletę postrzegamy wizualizację grafu zależności serwisów - jest to funkcjonalność praktycznie niemożliwa do zrealizowania bez uciekania się do użycia zewnętrznego narzędzia,
+a w przypadku korzystania z rozwiązania Hubble otrzymujemy ją natychmiast. Funkcjonalność ta może potencjalnie bardzo ułatwić administrację klastrem Kubernetes, czy np. wdrożenie nowego administratora w obcą domenę.
+Jedną z funkcjonalności reklamowanych przez Hubble jest też zbieranie wyświetlanie metryk dotyczących komunikacji sieciowej, która również w znacznym stopniu ułatwia administrację.
+
+
+Problemem na który natrafiliśmy podczas pracy z tym rozwiązaniem, była jego instalacja. 
+Z niewiadomych przyczyn w niektórych środowiskach (na przykład przy użyciu Windows Subsystem for Linux) komponentu nie udawało się poprawnie zainicjalizować, przez co jego działanie było niemożliwe.
+Warto mieć na uwadzę możliwe problemy z instalacją, rozważając wdrożenie tego serwisu.
+
+
 ## Źródła
+- https://www.mongodb.com/docs/
+- https://docs.cilium.io/en/stable/helm-reference/
+- https://github.com/cilium/hubble
+- https://helm.sh/docs/intro/cheatsheet/
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
